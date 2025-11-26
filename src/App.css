@@ -59,16 +59,7 @@ html, body {
 
 
 
-/* Responsive Image */
-@media (min-width: 1400px) {
-  .panel-img {
-    width: 45%;
-    max-width: 350px;
-  }
-  .panel-text {
-    font-size: 1.1rem;
-  }
-}
+
 
 
 
@@ -175,7 +166,7 @@ html, body {
 
 
   position: absolute;
-  z-index: 5;
+  z-index: -9 !important;
   overflow: hidden; /* for glossy shine */
 }
 
@@ -189,7 +180,7 @@ html, body {
   height: 40%;
   pointer-events: none;
 
-
+  z-index: -9 !important;
 
 }
 
@@ -199,6 +190,7 @@ html, body {
   max-width: 90%;
   font-size: 1.4rem;
   line-height: 1.2;
+  
   font-family: "Work Sans", sans-serif; /* APPLY WORK SANS HERE */
 }
 
@@ -227,6 +219,7 @@ html, body {
     height: 45vh;
     padding: 2rem;
     left: 0;
+    
   }
 
   #panel-1 .panel-img {
@@ -411,6 +404,7 @@ color: #4E070A;
     line-height: 1.3;
     max-width: 100%;
     margin: 0 auto;
+    
   }
 
   /* Sub-rise text inside title (if any) */
@@ -457,76 +451,91 @@ color: #4E070A;
     left: 20px !important;
     bottom: 40px !important;
     opacity: 0.55 !important;
-  }
-}
-@media (max-width: 768px) {
-  .horizontal-panel-img {
-
-    height: auto !important;
-    display: block;
-    margin: 0 auto;
-    position: relative!important;
-    top: 10vh !important;
+    z-index: -9 !important;
   }
 }
 
-.horizontal-panel-img {
-  position: absolute;
-  right: 5%;
 
-  transform: translateY(-55%);
+/* 769px–1440px: Move panel images to the right side */
+@media (min-width: 769px) and (max-width: 1440px) {
 
-  z-index: 99999;
+  /* Panels 2–7 only (horizontal panels) */
+  .panel:nth-child(n+2):nth-child(-n+7) {
+    display: flex;
+    flex-direction: row;      /* text left, image right */
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .panel:nth-child(n+2):nth-child(-n+7) .panel-text {
+    width: 45%;
+    text-align: left;
+  }
+
+  .panel:nth-child(n+2):nth-child(-n+7) .panel-img-2,
+  .panel:nth-child(n+2):nth-child(-n+7) .panel-img-3,
+  .panel:nth-child(n+2):nth-child(-n+7) .panel-img-4,
+  .panel:nth-child(n+2):nth-child(-n+7) .panel-img-5,
+  .panel:nth-child(n+2):nth-child(-n+7) .panel-img-6,
+  .panel:nth-child(n+2):nth-child(-n+7) .panel-img-7 {
+   
+
+    height: auto;
+    margin-left: auto;        /* ensures image hugs the right side */
+    margin-right: 0;
+    position: relative;
+    top: 0;
+    left: 150px;
+    transform: none;
+
+  }
 }
 
-/* Individual desktop sizes */
-.panel-img-1 { width: 0vw; }
-.panel-img-2 { width: 10vw; }
-.panel-img-3 { width: 10vw; }
-.panel-img-4 { width: 45vw; }
-.panel-img-5 { width: 0vw; }
-.panel-img-6 { width: 50vw; }
-.panel-img-7 { width: 0vw; }
 
-/* Mobile overrides */
-@media (max-width: 768px) {
-  .panel-img-1 { width: 0vw; }
-  .panel-img-2 { width: 23vw; }
-  .panel-img-3 { width: 10vw; }
-  .panel-img-4 { width: 45vw; }
-  .panel-img-5 { width: 0vw; }
-  .panel-img-6 { width: 75vw; }
-  .panel-img-7 { width: 0vw; }
+
+
+/* Responsive panel images */
+/* Shared base styling */
+.panel-img-1,
+.panel-img-2,
+.panel-img-3,
+.panel-img-4,
+.panel-img-5,
+.panel-img-6,
+.panel-img-7 {
+  position: relative;
+  height: auto;
+  top: -150px;
+  left: 0;
 }
-@media (max-width: 1024px) {
-  .panel-img-1 { width: 0vw; }
-  .panel-img-2 { width: 23vw;right:-10%; }
-  .panel-img-3 { width: 10vw; }
-  .panel-img-4 { width: 45vw;  right:-20%; }
-  .panel-img-5 { width: 0vw; }
-  .panel-img-6 { width: 55vw;
-  right:-25%; }
-  .panel-img-7 { width: 0vw; }
+
+
+.panel-img-2 {
+  width: 170px;
 }
-@media (max-width: 1440px) {
-  .panel-img-1 { width: 0vw; }
-  .panel-img-2 { width: 23vw;right:-10%; }
-  .panel-img-3 { width: 10vw; }
-  .panel-img-4 { width: 45vw;  right:-20%; }
-  .panel-img-5 { width: 0vw; }
-  .panel-img-6 { width: 55vw;
-  right:-25%; }
-  .panel-img-7 { width: 0vw; }
+
+.panel-img-3 {
+  width: 250px;
 }
-@media (max-width: 425px) {
-  .panel-img-1 { width: 0vw; }
-  .panel-img-2 { width: 35vw;  }
-  .panel-img-3 { width: 10vw; }
-  .panel-img-4 { width: 75vw; }
-  .panel-img-5 { width: 0vw; }
-  .panel-img-6 { width: 105vw; right:10%; }
-  .panel-img-7 { width: 0vw; }
+
+.panel-img-4 {
+  width: 300px;
 }
+
+.panel-img-5 {
+  width: 350px;
+}
+
+.panel-img-6 {
+  width: 470px;
+}
+
+.panel-img-7 {
+  width: 310px;
+}
+
+
+
 
 #panel-9 {
   display: flex;
@@ -645,7 +654,7 @@ color: #4E070A;
 }
 
 /* Tablet / smaller desktop */
-@media screen and (min-width: 1024px) and (max-width: 1444px) {
+@media screen and (min-width: 769px) and (max-width: 1444px) {
   .desktop-panel-title {
     position: absolute;
     top: 7%;
