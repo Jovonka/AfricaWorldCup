@@ -217,7 +217,7 @@ const App: React.FC = () => {
         position: "absolute",
         bottom: "80px",
         left: "290px",
-        width: "30vw",
+        width: "40vw",
         height: "40vh",
         background: `url("public/patterns.png")`,
         backgroundSize: "contain",

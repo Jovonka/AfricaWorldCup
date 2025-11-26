@@ -446,7 +446,7 @@ color: #4E070A;
 }
 @media (max-width: 768px) {
   .bottom-orange-pattern2 {
-    width: 45vw !important;
+    width: 50% !important;
     height: 22vh !important;
     left: 20px !important;
     bottom: 40px !important;
